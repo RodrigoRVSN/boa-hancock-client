@@ -12,7 +12,20 @@ ___
 - Fill the `.env` file, following the `.env.example`.
 
 <!--- #################### mudar pré-requisitos  ####################--->
+
 ___
+
+## 🎨 Layout
+
+> You can see the layout here in the [figma](https://www.figma.com/file/NdSt1Rce1uyTRTn1O9fhlV/Codojo?node-id=503%3A7968)
+
+![image](https://user-images.githubusercontent.com/75763403/204108567-2800bf11-280c-4fbe-95b6-359ea382142a.png)
+![image](https://user-images.githubusercontent.com/75763403/204108571-8ba01ff1-f2b7-439c-8628-f44a346a8a43.png)
+![image](https://user-images.githubusercontent.com/75763403/204108579-7f5d97c2-18bf-4585-8d32-0a9f8300adce.png)
+![image](https://user-images.githubusercontent.com/75763403/204108584-53d98c43-9090-4bd1-8229-ca76df2ac0e5.png)
+
+___
+
 ## 🛠 Tools used
 
 - Typescript
