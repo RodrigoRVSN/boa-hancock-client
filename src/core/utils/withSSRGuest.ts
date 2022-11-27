@@ -2,7 +2,7 @@ import { GetServerSideProps, GetServerSidePropsContext, GetServerSidePropsResult
 import { ACCESS_TOKEN } from '@core/constants/cookiesConstants'
 import { cookies } from '@core/helpers/parseCookies'
 
-export function withSSRGuest<P> (fn: GetServerSideProps<P>) {
+export function withSSRGuest<P extends { [key: string]: any }> (fn: GetServerSideProps<P>) {
   return async (
     ctx: GetServerSidePropsContext
   ): Promise<GetServerSidePropsResult<P>> => {
