@@ -15,8 +15,10 @@ export default function Home (): JSX.Element {
       <Head>
         <title>Home</title>
       </Head>
-      <h1>app</h1>
-      <button onClick={handleLoginWithGithub}>Entrar com github</button>
+      <div className='bg-black200 w-screen h-screen'>
+        <h1 className='text-text'>app</h1>
+        <button className='bg-text' onClick={handleLoginWithGithub}>Entrar com github</button>
+      </div>
     </>
   )
 }

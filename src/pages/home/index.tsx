@@ -1,11 +1,11 @@
+import Image from 'next/image'
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
 import { getCookies } from '@core/helpers/parseCookies'
 import { setUser } from '@core/store/features/user/userSlice'
 import { useAppDispatch, useAppSelector } from '@core/store/hooks'
 
 export default function Home () {
-  const user = useAppSelector(state => state.user)
+  const { user } = useAppSelector(state => state.user)
   const dispatch = useAppDispatch()
 
   const fetchProfile = async () => {
@@ -18,12 +18,11 @@ export default function Home () {
     dispatch(setUser(userInfo))
   }
 
-  console.log(user)
   useEffect(() => {
     fetchProfile()
   }, [])
 
   return (
-    <h1>home</h1>
+    <Image src={user.avatar_url!} alt='foto' height={200} width={200}/>
   )
 }
