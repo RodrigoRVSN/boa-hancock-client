@@ -2,21 +2,32 @@ import { GetServerSideProps, GetServerSidePropsContext, GetServerSidePropsResult
 import { ACCESS_TOKEN } from '@core/constants/cookiesConstants'
 import { cookies } from '@core/helpers/parseCookies'
 
-export function withSSRGuest<P> (fn: GetServerSideProps<P>) {
+export function withSSRAuth<P> (fn: GetServerSideProps<P>) {
   return async (
     ctx: GetServerSidePropsContext
   ): Promise<GetServerSidePropsResult<P>> => {
     const accessToken = cookies.getValue(ctx.req.headers, ACCESS_TOKEN)
 
-    if (accessToken) {
+    if (!accessToken) {
       return {
         redirect: {
-          destination: '/home',
+          destination: '/',
           permanent: false
         }
       }
     }
 
-    return await fn(ctx)
+    try {
+      return await fn(ctx)
+    } catch (err) {
+      cookies.destroyCookie(ctx.req.headers, ACCESS_TOKEN)
+
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false
+        }
+      }
+    }
   }
 }

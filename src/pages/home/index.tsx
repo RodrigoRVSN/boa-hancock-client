@@ -1,10 +1,11 @@
-import { GetServerSideProps } from 'next'
 import Image from 'next/image'
 import { useEffect } from 'react'
-import { getCookies } from '@core/helpers/parseCookies'
+import { ACCESS_TOKEN } from '@core/constants/cookiesConstants'
+import { cookies } from '@core/helpers/parseCookies'
 import { setUser } from '@core/store/features/user/userSlice'
 import { useAppDispatch, useAppSelector } from '@core/store/hooks'
 import { IUser } from '@core/types/IUser'
+import { withSSRAuth } from '@core/utils/withSSRAuth'
 
 export default function Home ({ userInfo }: { userInfo: IUser }) {
   const { user } = useAppSelector(state => state.user)
@@ -19,33 +20,13 @@ export default function Home ({ userInfo }: { userInfo: IUser }) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const accessToken = getCookies(ctx.req.headers)
+export const getServerSideProps = withSSRAuth(async (ctx) => {
+  const accessToken = cookies.getValue(ctx.req.headers, ACCESS_TOKEN)
 
-  if (!accessToken) {
-    return {
-      redirect: {
-        destination: '/'
-      }
-    }
-  }
-
-  const response = await fetch('http://localhost:4444/user/profile', {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/profile`, {
     headers: { Authorization: `Bearer ${accessToken}` }
   })
   const userInfo = await response.json()
 
-  if (userInfo) {
-    return {
-      props: {
-        userInfo
-      }
-    }
-  }
-
-  return {
-    redirect: {
-      destination: '/'
-    }
-  }
-}
+  return { props: { userInfo } }
+})
