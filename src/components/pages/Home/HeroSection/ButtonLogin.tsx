@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import { GithubLogo } from 'phosphor-react'
 
 export const ButtonLogin = () => {
   const { push } = useRouter()
@@ -8,6 +9,10 @@ export const ButtonLogin = () => {
   }
 
   return (
-    <button className='bg-text' onClick={handleLoginWithGithub}>Entrar com github</button>
+    <button className='bg-text flex mx-auto md:mx-[0] rounded-xl p-md text-p1 transition duration-150 hover:bg-gray200'
+            onClick={handleLoginWithGithub}>
+      <GithubLogo className='mr-xs' size={24}/>
+      <p>Entrar com github</p>
+    </button>
   )
 }
