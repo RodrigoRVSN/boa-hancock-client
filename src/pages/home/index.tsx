@@ -1,14 +1,13 @@
-import Image from 'next/image'
 import { useEffect } from 'react'
+import { UserSection } from '@components/pages/AuthHome/UserSection'
 import { ACCESS_TOKEN } from '@core/constants/cookiesConstants'
 import { cookies } from '@core/helpers/parseCookies'
 import { setUser } from '@core/store/features/user/userSlice'
-import { useAppDispatch, useAppSelector } from '@core/store/hooks'
+import { useAppDispatch } from '@core/store/hooks'
 import { IUser } from '@core/types/IUser'
 import { withSSRAuth } from '@core/utils/withSSRAuth'
 
 export default function Home ({ userInfo }: { userInfo: IUser }) {
-  const { user } = useAppSelector(state => state.user)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -16,7 +15,7 @@ export default function Home ({ userInfo }: { userInfo: IUser }) {
   }, [])
 
   return (
-    <Image src={user.avatar_url!} alt='foto' height={200} width={200}/>
+    <UserSection/>
   )
 }
 

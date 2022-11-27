@@ -14,8 +14,6 @@ export default function Home (): JSX.Element {
   )
 }
 
-export const getServerSideProps = withSSRGuest({
-  fn: async () => {
-    return { props: {} }
-  }
+export const getServerSideProps = withSSRGuest(async () => {
+  return { props: {} }
 })
