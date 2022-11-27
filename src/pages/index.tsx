@@ -15,10 +15,10 @@ export default function Home (): JSX.Element {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = (ctx) => {
-  const cookieValue = getCookies(ctx.req.headers)
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const accessToken = getCookies(ctx.req.headers)
 
-  if (cookieValue) {
+  if (accessToken) {
     return {
       redirect: {
         destination: '/home'
