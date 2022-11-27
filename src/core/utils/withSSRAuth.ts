@@ -20,7 +20,7 @@ export function withSSRAuth<P> (fn: GetServerSideProps<P>) {
     try {
       return await fn(ctx)
     } catch (err) {
-      cookies.destroyCookie(ctx.req.headers, ACCESS_TOKEN)
+      cookies.destroyCookie(ctx.res, ACCESS_TOKEN)
 
       return {
         redirect: {
