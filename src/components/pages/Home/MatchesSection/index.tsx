@@ -1,26 +1,9 @@
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
 import { UserSection } from '@components/pages/AuthHome/UserSection'
-import { ACCESS_TOKEN } from '@core/constants/cookiesConstants'
-import { cookies } from '@core/helpers/parseCookies'
-import { IUser } from '@core/types/IUser'
+import { useFetchMatches } from '@core/hooks/useFetchMatches'
 
 export const MatchesSection = () => {
-  const [matches, setMatches] = useState<IUser[]>([])
-
-  const fetchMatches = async () => {
-    const accessToken = cookies.getValue(window.document, ACCESS_TOKEN)
-
-    const response = await fetch('http://localhost:4444/matches', {
-      headers: { Authorization: `Bearer ${accessToken}` }
-    })
-    const data = await response.json()
-    setMatches(data)
-  }
-
-  useEffect(() => {
-    fetchMatches()
-  }, [])
+  const { matches } = useFetchMatches()
 
   return (
     <aside className='bg-black200'>
