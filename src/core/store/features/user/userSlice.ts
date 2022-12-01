@@ -1,9 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { IUser } from '@core/types/IUser'
 
 export interface UserState {
-  user: {
-    name?: string
-  }
+  user: Partial<IUser>
 }
 
 const initialState: UserState = {

@@ -1,35 +1,19 @@
-import { GetServerSideProps } from 'next'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
-import { getCookies } from '@core/helpers/parseCookies'
+import { HeroSection } from '@components/pages/Home/HeroSection'
+import { withSSRGuest } from '@core/utils/withSSRGuest'
 
 export default function Home (): JSX.Element {
-  const { push } = useRouter()
-
-  const handleLoginWithGithub = async () => {
-    push('http://localhost:4444/auth/')
-  }
-
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>Codojo | Faça seu login</title>
       </Head>
-      <h1>app</h1>
-      <button onClick={handleLoginWithGithub}>Entrar com github</button>
+
+      <HeroSection/>
     </>
   )
 }
 
-export const getServerSideProps: GetServerSideProps = (ctx) => {
-  const cookieValue = getCookies(ctx.req.headers)
-
-  if (cookieValue) {
-    return {
-      redirect: {
-        destination: '/home'
-      }
-    }
-  }
+export const getServerSideProps = withSSRGuest(async () => {
   return { props: {} }
-}
+})

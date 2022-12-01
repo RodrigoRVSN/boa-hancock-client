@@ -1,13 +1,15 @@
 import { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
-import { store } from '@core/store'
+import { PersistGate } from 'redux-persist/integration/react'
+import '@App/core/styles/global.css'
+import { persistor, store } from '@core/store'
 
-function MyApp ({ Component, pageProps }: AppProps): JSX.Element {
+export default function MyApp ({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <Provider store={store}>
-      <Component {...pageProps} />
+      <PersistGate persistor={persistor} loading={null}>
+        <Component {...pageProps} />
+      </PersistGate>
     </Provider>
   )
 }
-
-export default MyApp

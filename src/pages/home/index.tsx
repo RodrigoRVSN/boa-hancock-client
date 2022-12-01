@@ -1,29 +1,31 @@
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { getCookies } from '@core/helpers/parseCookies'
+import { UserSection } from '@components/pages/AuthHome/UserSection'
+import { ACCESS_TOKEN } from '@core/constants/cookiesConstants'
+import { cookies } from '@core/helpers/parseCookies'
 import { setUser } from '@core/store/features/user/userSlice'
-import { useAppDispatch, useAppSelector } from '@core/store/hooks'
+import { useAppDispatch } from '@core/store/hooks'
+import { IUser } from '@core/types/IUser'
+import { withSSRAuth } from '@core/utils/withSSRAuth'
 
-export default function Home () {
-  const user = useAppSelector(state => state.user)
+export default function Home ({ userInfo }: { userInfo: IUser }) {
   const dispatch = useAppDispatch()
 
-  const fetchProfile = async () => {
-    const accessToken = getCookies(document)
-
-    const response = await fetch('http://localhost:4444/user/profile', {
-      headers: { Authorization: `Bearer ${accessToken}` }
-    })
-    const userInfo = await response.json()
-    dispatch(setUser(userInfo))
-  }
-
-  console.log(user)
   useEffect(() => {
-    fetchProfile()
+    dispatch(setUser(userInfo))
   }, [])
 
   return (
-    <h1>home</h1>
+    <UserSection/>
   )
 }
+
+export const getServerSideProps = withSSRAuth(async (ctx) => {
+  const accessToken = cookies.getValue(ctx.req.headers, ACCESS_TOKEN)
+
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/profile`, {
+    headers: { Authorization: `Bearer ${accessToken}` }
+  })
+  const userInfo = await response.json()
+
+  return { props: { userInfo } }
+})
