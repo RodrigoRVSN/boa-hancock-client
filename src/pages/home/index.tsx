@@ -15,7 +15,9 @@ export default function Home ({ userInfo }: { userInfo: IUser }) {
   }, [])
 
   return (
-    <MatchesSection/>
+    <main className='bg-black200 min-h-screen'>
+      <MatchesSection/>
+    </main>
   )
 }
 
