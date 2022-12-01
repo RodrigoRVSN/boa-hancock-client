@@ -5,7 +5,7 @@ export const UserSection = () => {
   const { user } = useAppSelector(state => state.user)
 
   return (
-    <>
+    <div className='flex'>
       <Image
         src={user.avatar_url!}
         alt={`Foto de ${user.name}`}
@@ -13,6 +13,6 @@ export const UserSection = () => {
         height={64}
       />
       <p>{user.name}</p>
-    </>
+    </div>
   )
 }

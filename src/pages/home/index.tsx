@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { UserSection } from '@components/pages/AuthHome/UserSection'
+import { MatchesSection } from '@components/pages/Home/MatchesSection'
 import { ACCESS_TOKEN } from '@core/constants/cookiesConstants'
 import { cookies } from '@core/helpers/parseCookies'
 import { setUser } from '@core/store/features/user/userSlice'
@@ -15,7 +15,7 @@ export default function Home ({ userInfo }: { userInfo: IUser }) {
   }, [])
 
   return (
-    <UserSection/>
+    <MatchesSection/>
   )
 }
 
