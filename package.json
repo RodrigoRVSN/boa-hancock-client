@@ -14,7 +14,7 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.9.0",
+    "@reduxjs/toolkit": "^1.9.1",
     "next": "^13.0.5",
     "phosphor-react": "^1.4.1",
     "react": "^18",
