@@ -5,6 +5,6 @@ export interface IMatch {
   matched_at: string
   matched_user: IUser
   matched_user_id: string
-  messages: unknown
+  messages: string[]
   user_id: string
 }

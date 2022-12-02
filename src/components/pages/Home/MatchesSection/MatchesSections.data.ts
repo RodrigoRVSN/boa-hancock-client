@@ -1,0 +1,4 @@
+export enum SECTIONS {
+  MATCHES = 'MATCHES',
+  MESSAGES = 'MESSAGES',
+}
