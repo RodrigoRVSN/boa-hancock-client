@@ -6,7 +6,7 @@ export function withSSRGuest<P extends { [key: string]: any }> (fn: GetServerSid
   return async (
     ctx: GetServerSidePropsContext
   ): Promise<GetServerSidePropsResult<P>> => {
-    const accessToken = cookies.getValue(ctx.req.headers, ACCESS_TOKEN)
+    const accessToken = cookies.getValue(ACCESS_TOKEN, ctx.req.headers)
 
     if (accessToken) {
       return {

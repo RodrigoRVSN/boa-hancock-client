@@ -1,7 +1,9 @@
 import { IncomingHttpHeaders, ServerResponse } from 'http'
 
-const getValue = (local: Document | IncomingHttpHeaders, cookieName: string) => {
-  return local.cookie?.split('; ')
+const getValue = (cookieName: string, local?: Document | IncomingHttpHeaders) => {
+  const requestSide = local || window.document
+
+  return requestSide.cookie?.split('; ')
     .find((row) => row.startsWith(`${cookieName}=`))?.split('=')[1]
 }
 

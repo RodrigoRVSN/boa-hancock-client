@@ -9,7 +9,7 @@ class MatchesService {
   }
 
   async getMatches () {
-    const accessToken = cookies.getValue(window.document, ACCESS_TOKEN)
+    const accessToken = cookies.getValue(ACCESS_TOKEN)
 
     const response = await fetch(`${this.httpClient}/matches`, {
       headers: { Authorization: `Bearer ${accessToken}` }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import MatchesService from '@core/services/MatchesService/MatchesService'
 import { IMatch } from '@core/types/IMatch'
+import MatchesService from '@services/MatchesService/MatchesService'
 
 export const useFetchMatches = () => {
   const [matches, setMatches] = useState<IMatch[]>([])

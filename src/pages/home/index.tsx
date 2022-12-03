@@ -22,7 +22,7 @@ export default function Home ({ userInfo }: { userInfo: IUser }) {
 }
 
 export const getServerSideProps = withSSRAuth(async (ctx) => {
-  const accessToken = cookies.getValue(ctx.req.headers, ACCESS_TOKEN)
+  const accessToken = cookies.getValue(ACCESS_TOKEN, ctx.req.headers)
 
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/profile`, {
     headers: { Authorization: `Bearer ${accessToken}` }
