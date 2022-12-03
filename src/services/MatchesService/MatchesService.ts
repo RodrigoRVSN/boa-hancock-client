@@ -1,21 +1,14 @@
-import { ACCESS_TOKEN } from '@core/constants/cookiesConstants'
-import { cookies } from '@core/helpers/parseCookies'
+import HttpClient from '@services/HttpClient'
 
 class MatchesService {
-  private httpClient: string
+  private httpClient: typeof HttpClient
 
   constructor () {
-    this.httpClient = 'http://localhost:4444'
+    this.httpClient = HttpClient
   }
 
-  async getMatches () {
-    const accessToken = cookies.getValue(ACCESS_TOKEN)
-
-    const response = await fetch(`${this.httpClient}/matches`, {
-      headers: { Authorization: `Bearer ${accessToken}` }
-    })
-
-    return response.json()
+  getMatches () {
+    return this.httpClient.get('/matches')
   }
 }
 
