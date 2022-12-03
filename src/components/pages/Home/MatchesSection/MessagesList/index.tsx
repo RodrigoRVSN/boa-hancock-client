@@ -9,13 +9,13 @@ interface MessagesListProps {
 export const MessagesList = ({ matches }: MessagesListProps) => {
   return (
     <section className='flex flex-col gap-xmd mt-lg'>
-      {matches.map(({ matchedUser, messages }) => {
+      {matches.map(({ matchedUser, messages, id }) => {
         if (messages.length === 0) return null
 
         return (
           <Link
-            key={matchedUser.id}
-            href={`/messages/${matchedUser.id}`}
+            key={id}
+            href={`/messages/${id}`}
             className='flex rounded-3xl'
           >
 

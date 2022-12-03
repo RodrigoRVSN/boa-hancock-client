@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useEffect } from 'react'
 import { MatchesSection } from '@components/pages/Home/MatchesSection'
 import { ACCESS_TOKEN } from '@core/constants/cookiesConstants'
@@ -6,18 +7,25 @@ import { setUser } from '@core/store/features/user/userSlice'
 import { useAppDispatch } from '@core/store/hooks'
 import { IUser } from '@core/types/IUser'
 import { withSSRAuth } from '@core/utils/withSSRAuth'
+import UsersMapper from '@services/UserService/mappers/UsersMapper'
 
-export default function Home ({ userInfo }: { userInfo: IUser }) {
+export default function Home ({ userData }: { userData: IUser }) {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(setUser(userInfo))
+    dispatch(setUser(userData))
   }, [])
 
   return (
-    <main className='bg-black200 min-h-screen'>
-      <MatchesSection/>
-    </main>
+    <>
+      <Head>
+        <title>Codojo | Inicio</title>
+      </Head>
+
+      <main className='bg-black200 min-h-screen'>
+        <MatchesSection/>
+      </main>
+    </>
   )
 }
 
@@ -29,5 +37,7 @@ export const getServerSideProps = withSSRAuth(async (ctx) => {
   })
   const userInfo = await response.json()
 
-  return { props: { userInfo } }
+  const userData = UsersMapper.toDomain(userInfo)
+
+  return { props: { userData } }
 })

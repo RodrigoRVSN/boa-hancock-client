@@ -9,14 +9,14 @@ export const UserSection = () => {
     <div className='flex justify-between items-center'>
       <div className='flex items-center gap-md'>
         <Image
-          src={user.avatar_url!}
+          src={user.avatarUrl!}
           alt={`Foto de ${user.name}`}
           width={64}
           height={64}
           className='rounded-full'
         />
 
-        <span className='text-text text-h4'>{user.name}</span>
+        <span className='text-text text-h4'>{user.name || user.login}</span>
       </div>
 
       <Gear className='mr-xs text-secondary' size={32}/>

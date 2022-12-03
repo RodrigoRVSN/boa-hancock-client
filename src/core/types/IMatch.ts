@@ -1,12 +1,12 @@
 import { IMessage } from '@core/types/IMessage'
-import { IUser } from '@core/types/IUser'
+import { IUser, PersistenceUser } from '@core/types/IUser'
 
 export interface PersistenceMatch {
   id: string
   matched_at: string
-  matched_user: IUser
+  matched_user: PersistenceUser
   matched_user_id: string
-  messages: string[]
+  messages: IMessage[]
   user_id: string
 }
 

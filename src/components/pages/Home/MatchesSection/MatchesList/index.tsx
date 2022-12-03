@@ -9,8 +9,8 @@ interface MatchesListProps {
 export const MatchesList = ({ matches }: MatchesListProps) => {
   return (
     <section className='mt-xlg text-text text-p5 flex flex-wrap gap-md'>
-      {matches.map(({ matchedUser }) => (
-        <Link key={matchedUser.id} href={`/messages/${matchedUser.id}`} className='flex flex-col items-center'>
+      {matches.map(({ matchedUser, id }) => (
+        <Link key={id} href={`/messages/${id}`} className='flex flex-col items-center'>
 
           <Image
             src={matchedUser.avatar_url!}
