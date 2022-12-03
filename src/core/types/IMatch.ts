@@ -1,3 +1,4 @@
+import { IMessage } from '@core/types/IMessage'
 import { IUser } from '@core/types/IUser'
 
 export interface PersistenceMatch {
@@ -14,6 +15,6 @@ export interface IMatch {
   matchedAt: string
   matchedUser: IUser
   matchedUserId: string
-  messages: string[]
+  messages: IMessage[]
   userId: string
 }

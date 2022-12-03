@@ -11,7 +11,7 @@ class MatchesService {
   async getMatches () {
     const matches = await this.httpClient.get('/matches')
 
-    return MatchesMapper.toDomain(matches)
+    return matches.map(MatchesMapper.toDomain)
   }
 }
 

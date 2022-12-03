@@ -26,9 +26,7 @@ export const MatchesSection = () => {
         selectedList={selectedList}
       />
 
-      <section className='mt-xlg text-text text-p5 flex flex-wrap gap-md'>
-        <List/>
-      </section>
+      <List/>
     </aside>
   )
 }

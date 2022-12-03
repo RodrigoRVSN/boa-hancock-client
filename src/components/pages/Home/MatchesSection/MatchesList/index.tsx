@@ -8,7 +8,7 @@ interface MatchesListProps {
 
 export const MatchesList = ({ matches }: MatchesListProps) => {
   return (
-    <>
+    <section className='mt-xlg text-text text-p5 flex flex-wrap gap-md'>
       {matches.map(({ matchedUser }) => (
         <Link key={matchedUser.id} href={`/messages/${matchedUser.id}`} className='flex flex-col items-center'>
 
@@ -23,6 +23,6 @@ export const MatchesList = ({ matches }: MatchesListProps) => {
           <span className='text-text text-p5'>{matchedUser.login}</span>
         </Link>
       ))}
-    </>
+    </section>
   )
 }
