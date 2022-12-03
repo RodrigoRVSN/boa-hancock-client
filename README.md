@@ -31,10 +31,8 @@ ___
 - Typescript
 - <b>Next</b>
 - Redux toolkit
-- Cypress
-- Vitest
-- Bun
 - Socket.io websockets
+- Phospor icons
 
 <!--- #################### mudar ferramentas #################### --->
 
@@ -51,25 +49,25 @@ ___
 #### Install dependencies
 
 ```powershell
-  bun install
+  yarn install
 ```
 
 #### Run application
 
 ```powershell
-  bun dev
+  yarn dev
 ```
 
 #### Run unit tests
 
 ```powershell
-  bun test:watch
+  yarn test:watch
 ```
 
 #### Run tests E2E
 
 ```powershell
-  bun cy:run
+  yarn cy:run
 ```
 
 ___
@@ -104,24 +102,16 @@ ___
 
 Made with ❤️ by:
 <table>
-<tbody>
-  <tr>
-  <td align="center">
-      <a href="#">
-        <img src="https://github.com/rodrigorvsn.png" width="100px;" alt="Foto do Rodrigo Victor no GitHub"/><br>
-        <sub>
-          <b>Rodrigo Victor</b>
-        </sub>
-      </a>
-    </td>
-  <td align="center">
-      <a href="#">
-        <img src="https://github.com/gustavoabel.png" width="100px;" alt="Foto do Gustavo Abel no GitHub"/><br>
-        <sub>
-          <b>Gustavo Abel</b>
-        </sub>
-      </a>
-    </td>
+  <tbody>
+    <tr>
+      <td align="center">
+        <a href="#">
+          <img src="https://github.com/rodrigorvsn.png" width="100px;" alt="Foto do Rodrigo Victor no GitHub"/><br>
+          <sub>
+            <b>Rodrigo Victor</b>
+          </sub>
+        </a>
+      </td>
     </tr>
   </tbody>
 </table>
