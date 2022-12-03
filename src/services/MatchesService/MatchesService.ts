@@ -1,4 +1,5 @@
 import HttpClient from '@services/HttpClient'
+import MatchesMapper from '@services/MatchesService/mappers/MatchesMapper'
 
 class MatchesService {
   private httpClient: typeof HttpClient
@@ -7,8 +8,10 @@ class MatchesService {
     this.httpClient = HttpClient
   }
 
-  getMatches () {
-    return this.httpClient.get('/matches')
+  async getMatches () {
+    const matches = await this.httpClient.get('/matches')
+
+    return MatchesMapper.toDomain(matches)
   }
 }
 
