@@ -1,9 +1,9 @@
 import { useState } from 'react'
+import { MatchesList } from '@components/pages/AuthHome/MatchesSection/MatchesList'
+import { SECTIONS } from '@components/pages/AuthHome/MatchesSection/MatchesSections.data'
+import { MessagesList } from '@components/pages/AuthHome/MatchesSection/MessagesList'
+import { SectionsButton } from '@components/pages/AuthHome/MatchesSection/SectionsButton'
 import { UserSection } from '@components/pages/AuthHome/UserSection'
-import { MatchesList } from '@components/pages/Home/MatchesSection/MatchesList'
-import { SECTIONS } from '@components/pages/Home/MatchesSection/MatchesSections.data'
-import { MessagesList } from '@components/pages/Home/MatchesSection/MessagesList'
-import { SectionsButton } from '@components/pages/Home/MatchesSection/SectionsButton'
 import { useFetchMatches } from '@core/hooks/useFetchMatches'
 
 export const MatchesSection = () => {

@@ -1,4 +1,5 @@
 import { ACCESS_TOKEN } from '@core/constants/cookiesConstants'
+import APIError from '@core/Errors/ApiError'
 import { cookies } from '@core/helpers/parseCookies'
 
 class HttpClient {
@@ -15,7 +16,11 @@ class HttpClient {
       headers: { Authorization: `Bearer ${this.accessToken}` }
     })
 
-    return response.json()
+    if (response.ok) {
+      return response.json()
+    }
+
+    throw new APIError(response, await response.json())
   }
 }
 

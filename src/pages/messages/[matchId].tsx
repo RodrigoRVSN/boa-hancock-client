@@ -1,7 +1,7 @@
 import Head from 'next/head'
-import { ChatSubmit } from '@components/pages/Home/Messages/ChatSubmit'
-import { MatchedUserSection } from '@components/pages/Home/Messages/MatchedUserSection'
-import { MessagesList } from '@components/pages/Home/Messages/MessagesList'
+import { ChatSubmit } from '@components/pages/AuthHome/Messages/ChatSubmit'
+import { MatchedUserSection } from '@components/pages/AuthHome/Messages/MatchedUserSection'
+import { MessagesList } from '@components/pages/AuthHome/Messages/MessagesList'
 import { withSSRAuth } from '@core/utils/withSSRAuth'
 import { useMessages } from '@pages/messages/useMessages'
 

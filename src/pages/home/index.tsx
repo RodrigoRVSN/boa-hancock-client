@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
-import { MatchesSection } from '@components/pages/Home/MatchesSection'
+import { MatchCard } from '@components/pages/AuthHome/MatchCard'
+import { MatchesSection } from '@components/pages/AuthHome/MatchesSection'
 import { ACCESS_TOKEN } from '@core/constants/cookiesConstants'
 import { cookies } from '@core/helpers/parseCookies'
 import { setUser } from '@core/store/features/user/userSlice'
@@ -22,8 +23,12 @@ export default function Home ({ userData }: { userData: IUser }) {
         <title>Codojo | Inicio</title>
       </Head>
 
-      <main className='bg-black200 min-h-screen'>
+      <main className='bg-black200 min-h-screen flex items-center'>
         <MatchesSection/>
+
+        <div className='justify-center flex w-[60%]'>
+          <MatchCard/>
+        </div>
       </main>
     </>
   )

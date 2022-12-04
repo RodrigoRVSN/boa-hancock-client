@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
-import { SECTIONS } from '@components/pages/Home/MatchesSection/MatchesSections.data'
+import { SECTIONS } from '@components/pages/AuthHome/MatchesSection/MatchesSections.data'
 
 interface SectionsButtonProps {
   setSelectedList: Dispatch<SetStateAction<SECTIONS>>
