@@ -1,9 +1,27 @@
 import Image from 'next/image'
 import { Heart, X } from 'phosphor-react'
+import { MatchModal } from '@components/pages/AuthHome/MatchCard/MatchModal'
 import { useFetchCard } from '@core/hooks/useFetchCard'
+import { LIKE_OR_DISLIKE } from '@core/hooks/useFetchCard/useFetchCard.types'
 
 export const MatchCard = () => {
-  const { userCard, isError } = useFetchCard()
+  const {
+    userCard,
+    isError,
+    handleLikeOrDislikeAUser,
+    isMatchModalOpen,
+    matchedUser,
+    handleCloseMatchModal
+  } = useFetchCard()
+
+  if (isMatchModalOpen) {
+    return (
+      <MatchModal
+        onCloseModal={handleCloseMatchModal}
+        matchedUser={matchedUser}
+      />
+    )
+  }
 
   if (isError) {
     return (
@@ -27,11 +45,17 @@ export const MatchCard = () => {
           <p className='text-gray100 text-p5'>{userCard.login}</p>
 
           <div className='flex justify-between mt-lg'>
-            <button className='rounded-full border-2 border-secondary'>
+            <button
+              onClick={() => handleLikeOrDislikeAUser(LIKE_OR_DISLIKE.DISLIKE)}
+              className='rounded-full border-2 border-secondary'
+            >
               <X size={32} weight="fill" className='text-secondary p-xs'/>
             </button>
 
-            <button className='rounded-full border-2 border-primary'>
+            <button
+              onClick={() => handleLikeOrDislikeAUser(LIKE_OR_DISLIKE.LIKE)}
+              className='rounded-full border-2 border-primary'
+            >
               <Heart size={32} weight="fill" className='text-primary p-xs'/>
             </button>
           </div>

@@ -22,6 +22,23 @@ class HttpClient {
 
     throw new APIError(response, await response.json())
   }
+
+  async post<T> (requestUrl: string, body: unknown) {
+    const response = await fetch(`${this.baseURL}${requestUrl}`, {
+      headers: {
+        Authorization: `Bearer ${this.accessToken}`,
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify(body)
+    })
+
+    if (response.ok) {
+      return response.json()
+    }
+
+    throw new APIError(response, await response.json())
+  }
 }
 
 export default new HttpClient()

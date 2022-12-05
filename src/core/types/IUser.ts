@@ -30,4 +30,6 @@ export interface IUser {
   twitterUsername: string;
   createdAt: Date;
   updatedAt: Date;
+  isMatch?: boolean;
+  matchId?: string;
 }
