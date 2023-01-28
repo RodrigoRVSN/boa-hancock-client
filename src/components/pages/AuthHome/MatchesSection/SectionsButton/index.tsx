@@ -12,7 +12,7 @@ export const SectionsButton = ({ selectedList, setSelectedList }: SectionsButton
   }
 
   return (
-    <aside className='flex gap-lg text-text mt-xlg'>
+    <aside className='flex gap-lg text-text mt-xlg mb-lg'>
       <button
         className={`${selectedList === SECTIONS.MATCHES && 'border-b-2 border-primary'}`}
         onClick={() => handleChangeSection(SECTIONS.MATCHES)}

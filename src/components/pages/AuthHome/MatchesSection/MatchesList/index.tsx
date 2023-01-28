@@ -4,16 +4,19 @@ import { IMatch } from '@core/types/IMatch'
 
 interface MatchesListProps {
   matches: IMatch[]
+  isHorizontal?: boolean
 }
 
-export const MatchesList = ({ matches }: MatchesListProps) => {
+export const MatchesList = ({ matches, isHorizontal }: MatchesListProps) => {
+  if (!matches.length) return <h1 className='text-text'>Opa ninguem aqui</h1>
+
   return (
-    <section className='mt-xlg text-text text-p5 flex flex-wrap gap-md'>
+    <section className={`flex text-text text-p5  gap-md ${isHorizontal ? 'overflow-auto' : 'flex-wrap'}`}>
       {matches.map(({ matchedUser, id }) => (
         <Link key={id} href={`/messages/${id}`} className='flex flex-col items-center'>
 
           <Image
-            src={matchedUser.avatar_url!}
+            src={matchedUser.avatarUrl!}
             alt={`Foto de ${matchedUser.name}`}
             width={128}
             height={128}

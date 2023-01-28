@@ -3,15 +3,15 @@ import Link from 'next/link'
 import { IMatch } from '@core/types/IMatch'
 
 interface MessagesListProps {
-  matches: IMatch[]
+  matchsWithMessage: IMatch[]
 }
 
-export const MessagesList = ({ matches }: MessagesListProps) => {
+export const MessagesList = ({ matchsWithMessage }: MessagesListProps) => {
+  if (!matchsWithMessage.length) return <h1 className='text-text'>Opa, ninguém aqui meu chefe</h1>
+
   return (
     <section className='flex flex-col gap-xmd mt-lg'>
-      {matches.map(({ matchedUser, messages, id }) => {
-        if (messages.length === 0) return null
-
+      {matchsWithMessage.map(({ matchedUser, messages, id }) => {
         return (
           <Link
             key={id}
@@ -20,7 +20,7 @@ export const MessagesList = ({ matches }: MessagesListProps) => {
           >
 
             <Image
-              src={matchedUser.avatar_url!}
+              src={matchedUser.avatarUrl!}
               alt={`Foto de ${matchedUser.name}`}
               width={64}
               height={64}
