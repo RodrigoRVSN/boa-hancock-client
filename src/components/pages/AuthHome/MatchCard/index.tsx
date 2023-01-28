@@ -30,7 +30,7 @@ export const MatchCard = () => {
   }
 
   return (
-    <div className='bg-gradient-to-t from-secondary to-primary p-xxs rounded-2xl '>
+    <div className='bg-gradient-to-t from-secondary to-primary p-xxs rounded-2xl'>
       <div className='rounded-2xl bg-black300 min-w-[300px] bg-gradient-to-t from-black to-gray100'>
         <Image
           src={userCard.avatarUrl}
@@ -49,14 +49,14 @@ export const MatchCard = () => {
               onClick={() => handleLikeOrDislikeAUser(LIKE_OR_DISLIKE.DISLIKE)}
               className='rounded-full border-2 border-secondary'
             >
-              <X size={32} weight="fill" className='text-secondary p-xs'/>
+              <X size={32} weight="fill" className='text-secondary p-xs' />
             </button>
 
             <button
               onClick={() => handleLikeOrDislikeAUser(LIKE_OR_DISLIKE.LIKE)}
               className='rounded-full border-2 border-primary'
             >
-              <Heart size={32} weight="fill" className='text-primary p-xs'/>
+              <Heart size={32} weight="fill" className='text-primary p-xs' />
             </button>
           </div>
         </footer>

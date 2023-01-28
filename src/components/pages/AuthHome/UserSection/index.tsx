@@ -6,7 +6,7 @@ export const UserSection = () => {
   const { user } = useAppSelector(state => state.user)
 
   return (
-    <div className='flex justify-between items-center'>
+    <header className='flex justify-between items-center'>
       <div className='flex items-center gap-md'>
         <Image
           src={user.avatarUrl!}
@@ -19,7 +19,7 @@ export const UserSection = () => {
         <span className='text-text text-h4'>{user.name || user.login}</span>
       </div>
 
-      <Gear className='mr-xs text-secondary' size={32}/>
-    </div>
+      <Gear className='mr-xs text-secondary' size={32} />
+    </header>
   )
 }

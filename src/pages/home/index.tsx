@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
+import { Footer } from '@App/components/Footer'
+import { useResponsive } from '@App/core/hooks/useResponsive'
 import { MatchCard } from '@components/pages/AuthHome/MatchCard'
 import { MatchesSection } from '@components/pages/AuthHome/MatchesSection'
 import { ACCESS_TOKEN } from '@core/constants/cookiesConstants'
@@ -12,10 +14,11 @@ import UsersMapper from '@services/UserService/mappers/UsersMapper'
 
 export default function Home ({ userData }: { userData: IUser }) {
   const dispatch = useAppDispatch()
+  const { isDesktop } = useResponsive()
 
   useEffect(() => {
     dispatch(setUser(userData))
-  }, [])
+  }, [dispatch, userData])
 
   return (
     <>
@@ -23,12 +26,14 @@ export default function Home ({ userData }: { userData: IUser }) {
         <title>Codojo | Inicio</title>
       </Head>
 
-      <main className='bg-black200 min-h-screen flex items-center'>
-        <MatchesSection/>
+      <main className='bg-black200 min-h-screen flex flex-col lg:flex-row items-center'>
+        <MatchesSection />
 
-        <div className='justify-center flex w-[60%]'>
-          <MatchCard/>
+        <div className='justify-center flex lg:w-[60%] m-auto'>
+          <MatchCard />
         </div>
+
+        {!isDesktop && <Footer />}
       </main>
     </>
   )
