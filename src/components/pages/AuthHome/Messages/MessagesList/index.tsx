@@ -4,14 +4,14 @@ import { IMessage } from '@core/types/IMessage'
 
 interface MessagesListProps {
   messages: IMessage[]
-  chatRef: MutableRefObject<any>
+  chatRef: MutableRefObject<HTMLDivElement>
 }
 
 export const MessagesList = ({ messages, chatRef }: MessagesListProps) => {
   const { user } = useAppSelector(state => state.user)
 
   return (
-    <section className='flex flex-col gap-md my-lg max-h-[calc(100vh-50vh)] overflow-y-auto'>
+    <section className='flex flex-col gap-md h-[calc(100vh-35vh)] py-md overflow-y-auto'>
       {messages?.map(message =>
         <p
           className={
@@ -23,7 +23,7 @@ export const MessagesList = ({ messages, chatRef }: MessagesListProps) => {
         </p>
       )}
 
-      <div ref={chatRef}/>
+      <div ref={chatRef} />
     </section>
   )
 }

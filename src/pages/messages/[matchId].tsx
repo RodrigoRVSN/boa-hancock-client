@@ -15,11 +15,10 @@ export default function Message () {
       </Head>
 
       <div className='bg-black200 min-h-screen'>
-        <MatchedUserSection matchedUser={chatInfo?.match?.matchedUser}/>
+        <MatchedUserSection matchedUser={chatInfo?.match?.matchedUser} />
 
         <main className='max-w-5xl mx-auto px-xs'>
-
-          <MessagesList messages={chatInfo.messages} chatRef={chatRef}/>
+          <MessagesList messages={chatInfo.messages} chatRef={chatRef} />
 
           <ChatSubmit
             handleSendMessage={handleSendMessage}

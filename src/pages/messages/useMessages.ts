@@ -11,7 +11,7 @@ export const useMessages = () => {
   const { query } = useRouter()
   const [chatInfo, setChatInfo] = useState({} as IChatInfo)
   const { user } = useAppSelector(state => state.user)
-  const chatRef = useRef<HTMLDivElement>(null)
+  const chatRef = useRef<HTMLDivElement>({} as HTMLDivElement)
 
   const [userTyping, setUserTyping] = useState('')
 

@@ -22,13 +22,13 @@ export const ChatSubmit = ({ handleSendMessage, handleSomeoneTyping, userTyping 
 
   return (
     <>
-      <div className='mx-auto relative bg-gray100 rounded-full p-lg flex justify-between'>
+      <div className='mx-auto relative bg-gray100 rounded-full p-xs flex justify-between mt-xs'>
         <p className='text-gray100 ml-xlg absolute top-[-24px]'>
           {userTyping && `${userTyping} esta digitando...`}
         </p>
 
         <textarea
-          className='w-full bg-gray100 outline-none'
+          className='w-full bg-gray100 outline-none m-xxs resize-none'
           onChange={handleTypeMessage}
           value={messageText}
         />
