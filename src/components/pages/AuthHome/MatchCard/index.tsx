@@ -25,7 +25,10 @@ export const MatchCard = () => {
 
   if (isError) {
     return (
-      <h1 className='text-text'>Nenhum usuário encontrado!</h1>
+      <section className='flex flex-col items-center'>
+        <Image alt='User not found' src='/assets/not-found.svg' width={300} height={300} />
+        <h1 className='text-text text-h4'>Nenhum usuário encontrado!</h1>
+      </section>
     )
   }
 

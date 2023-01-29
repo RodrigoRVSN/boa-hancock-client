@@ -20,7 +20,7 @@ export const MatchesSection = () => {
   const List = () => sectionsComponent[selectedList]
 
   return (
-    <aside className='bg-black100 h-xxxlg lg:min-h-screen w-full lg:w-[40%] border-r-primary lg:border-r-2 p-md lg:p-xxlg'>
+    <aside className='bg-black100 h-xxxlg lg:min-h-screen overflow-auto w-full lg:w-[40%] border-r-primary lg:border-r-2 p-md lg:p-xxlg'>
       <UserSection />
 
       {isDesktop && (

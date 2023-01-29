@@ -29,7 +29,7 @@ export const MatchedUserSection = ({ matchedUser }: MatchedUserSectionProps) => 
         />
 
         <span
-          className='text-text font-bold'
+          className='text-text font-bold text-h4'
         >
           {matchedUser.name || matchedUser.login}
         </span>
