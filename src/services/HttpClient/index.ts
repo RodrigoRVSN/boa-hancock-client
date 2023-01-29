@@ -1,5 +1,5 @@
+import APIError from '@App/core/errors/ApiError'
 import { ACCESS_TOKEN } from '@core/constants/cookiesConstants'
-import APIError from '@core/Errors/ApiError'
 import { cookies } from '@core/helpers/parseCookies'
 
 class HttpClient {

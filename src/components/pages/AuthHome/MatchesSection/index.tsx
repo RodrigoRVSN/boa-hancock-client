@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { useResponsive } from '@App/core/hooks/useResponsive'
-import { MatchesList } from '@components/pages/AuthHome/MatchesSection/MatchesList'
-import { SECTIONS } from '@components/pages/AuthHome/MatchesSection/MatchesSections.data'
-import { MessagesList } from '@components/pages/AuthHome/MatchesSection/MessagesList'
-import { SectionsButton } from '@components/pages/AuthHome/MatchesSection/SectionsButton'
-import { UserSection } from '@components/pages/AuthHome/UserSection'
 import { useFetchMatches } from '@core/hooks/useFetchMatches'
+import { MatchesList } from './MatchesList'
+import { SECTIONS } from './MatchesSections.data'
+import { MessagesList } from './MessagesList'
+import { SectionsButton } from './SectionsButton'
+import { UserSection } from './UserSection'
 
 export const MatchesSection = () => {
   const { matches, matchsWithMessage } = useFetchMatches()

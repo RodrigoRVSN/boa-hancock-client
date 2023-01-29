@@ -41,7 +41,7 @@ export const useMessages = () => {
   }, [query.matchId])
 
   useEffect(() => {
-    let timeout
+    let timeout: NodeJS.Timeout
 
     socket.on('typing', ({ name }) => {
       const isSameUser = name === user.name || name === user.login
@@ -52,9 +52,8 @@ export const useMessages = () => {
 
       timeout = setTimeout(() => setUserTyping(''), 3000)
     })
-    return () => {
-      timeout = false
-    }
+
+    return () => clearTimeout(timeout)
   }, [user.login, user.name])
 
   useEffect(() => {

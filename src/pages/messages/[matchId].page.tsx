@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import { ChatSubmit } from '@components/pages/AuthHome/Messages/ChatSubmit'
-import { MatchedUserSection } from '@components/pages/AuthHome/Messages/MatchedUserSection'
-import { MessagesList } from '@components/pages/AuthHome/Messages/MessagesList'
+import { ChatSubmit } from '@components/pages/Messages/ChatSubmit'
+import { List } from '@components/pages/Messages/List'
+import { MatchedUserSection } from '@components/pages/Messages/MatchedUserSection'
+import { useMessages } from '@core/hooks/useMessages'
 import { withSSRAuth } from '@core/utils/withSSRAuth'
-import { useMessages } from '@pages/messages/useMessages'
 
 export default function Message () {
   const { chatInfo, handleSomeoneTyping, handleSendMessage, userTyping, chatRef } = useMessages()
@@ -18,7 +18,7 @@ export default function Message () {
         <MatchedUserSection matchedUser={chatInfo?.match?.matchedUser} />
 
         <main className='max-w-5xl mx-auto px-xs'>
-          <MessagesList messages={chatInfo.messages} chatRef={chatRef} />
+          <List messages={chatInfo.messages} chatRef={chatRef} />
 
           <ChatSubmit
             handleSendMessage={handleSendMessage}

@@ -8,7 +8,7 @@ interface MessagesListProps {
   chatRef: MutableRefObject<HTMLDivElement>
 }
 
-export const MessagesList = ({ messages, chatRef }: MessagesListProps) => {
+export const List = ({ messages, chatRef }: MessagesListProps) => {
   const { user } = useAppSelector(state => state.user)
 
   return (
