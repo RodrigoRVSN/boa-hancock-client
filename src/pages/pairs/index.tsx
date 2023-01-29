@@ -14,7 +14,7 @@ const Pairs = () => {
       </Head>
 
       <main
-        className='bg-black200 min-h-screen p-lg mb-xxxlg'
+        className='bg-black200 min-h-screen p-lg lg:mb-xxxlg'
       >
         <section>
           <h1 className='font-bold text-text text-h4 mb-md'>Seus pares</h1>

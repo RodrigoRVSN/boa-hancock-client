@@ -1,13 +1,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { IMatch } from '@core/types/IMatch'
+import styles from './styles.module.css'
 
 interface MessagesListProps {
   matchsWithMessage: IMatch[]
 }
 
 export const MessagesList = ({ matchsWithMessage }: MessagesListProps) => {
-  if (!matchsWithMessage.length) return <h1 className='text-text'>Opa, ninguém aqui meu chefe</h1>
+  if (!matchsWithMessage.length) return <h1 className='text-text'>Nenhuma mensagem ainda!</h1>
 
   return (
     <section className='flex flex-col gap-xmd mt-lg'>
@@ -16,7 +17,7 @@ export const MessagesList = ({ matchsWithMessage }: MessagesListProps) => {
           <Link
             key={id}
             href={`/messages/${id}`}
-            className='flex rounded-3xl'
+            className={`flex rounded-lg p-xs duration-200 hover:scale-105 ${styles.animate_bg}`}
           >
 
             <Image
@@ -29,9 +30,9 @@ export const MessagesList = ({ matchsWithMessage }: MessagesListProps) => {
 
             <div className='flex flex-col ml-xs'>
               <span className='text-text text-p5'>{matchedUser.login}</span>
-              <span
-
-                className='text-gray100 text-p5 break-all text-ellipsis'>{messages[messages.length - 1].text}</span>
+              <span className='text-gray100 text-p5 break-all text-ellipsis'>
+                {messages[messages.length - 1].text}
+              </span>
             </div>
           </Link>
         )

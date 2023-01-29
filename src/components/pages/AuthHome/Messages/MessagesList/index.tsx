@@ -14,10 +14,13 @@ export const MessagesList = ({ messages, chatRef }: MessagesListProps) => {
     <section className='flex flex-col gap-md h-[calc(100vh-35vh)] py-md overflow-y-auto'>
       {messages?.map(message =>
         <p
-          className={
-            `${user.id === message.sender_id ? 'bg-primary ml-auto' : 'bg-secondary mr-auto'} 
-          p-md rounded-xl max-w-[50vw] break-all`}
           key={message.id}
+          className={`
+            ${user.id === message.sender_id
+              ? 'bg-primary ml-auto'
+              : 'bg-secondary mr-auto'} 
+            p-md rounded-xl max-w-[50vw] break-all
+          `}
         >
           {message.text}
         </p>

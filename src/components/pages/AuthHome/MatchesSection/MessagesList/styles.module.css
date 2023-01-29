@@ -1,0 +1,21 @@
+.animate_bg:hover {
+  background-size: 200%;
+  animation: GradientToRight 0.3s ease-in forwards;
+
+  @apply bg-gradient-to-r from-black100 via-black200 to-secondary
+}
+
+
+@keyframes GradientToRight {
+  0% {
+    background-position-x: 0%;
+  }
+
+  80% {
+    background-position-x: -30%;
+  }
+
+  100% {
+    background-position-x: -100%;
+  }
+}
