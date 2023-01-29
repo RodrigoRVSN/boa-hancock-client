@@ -1,0 +1,15 @@
+.fade_message {
+  animation: FadeInMessage 0.3s ease-in;
+}
+
+@keyframes FadeInMessage {
+  0% {
+    opacity: 0.3;
+    transform: translateX(-30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

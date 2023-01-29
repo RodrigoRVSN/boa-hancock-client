@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { connect } from 'socket.io-client'
 import { useAppSelector } from '@core/store/hooks'
 import { IMessage } from '@core/types/IMessage'
@@ -34,11 +34,11 @@ export const useMessages = () => {
     socket.emit('typing', user.name || user.login)
   }
 
-  const fetchMessages = async () => {
+  const fetchMessages = useCallback(async () => {
     const chatInfoByMatch = await MessagesService.getMessagesByMatchId(String(query.matchId))
 
     setChatInfo(chatInfoByMatch)
-  }
+  }, [query.matchId])
 
   useEffect(() => {
     let timeout
@@ -55,7 +55,7 @@ export const useMessages = () => {
     return () => {
       timeout = false
     }
-  }, [])
+  }, [user.login, user.name])
 
   useEffect(() => {
     socket.on('receivedMessage', handleReceivedMessages)
@@ -63,10 +63,10 @@ export const useMessages = () => {
 
   useEffect(() => {
     query.matchId && fetchMessages()
-  }, [query.matchId])
+  }, [fetchMessages, query.matchId])
 
   useEffect(() => {
-    chatRef.current!.scrollIntoView()
+    chatRef.current!.scrollIntoView({ behavior: 'smooth' })
   }, [chatInfo])
 
   return { chatInfo, handleSendMessage, handleSomeoneTyping, userTyping, chatRef }

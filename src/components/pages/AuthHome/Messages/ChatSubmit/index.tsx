@@ -1,5 +1,5 @@
 import { PaperPlaneRight } from 'phosphor-react'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 
 interface ChatSubmitProps {
   handleSendMessage: (text: string) => void
@@ -10,7 +10,9 @@ interface ChatSubmitProps {
 export const ChatSubmit = ({ handleSendMessage, handleSomeoneTyping, userTyping }: ChatSubmitProps) => {
   const [messageText, setMessageText] = useState('')
 
-  const handleSubmitMessage = () => {
+  const handleSubmitMessage = (event: FormEvent) => {
+    event.preventDefault()
+
     setMessageText('')
     handleSendMessage(messageText)
   }
@@ -22,7 +24,7 @@ export const ChatSubmit = ({ handleSendMessage, handleSomeoneTyping, userTyping 
 
   return (
     <>
-      <div className='mx-auto relative bg-gray100 rounded-full p-xs flex justify-between mt-xs'>
+      <form onSubmit={handleSubmitMessage} className='mx-auto relative bg-gray100 rounded-full p-xs flex justify-between mt-xs'>
         <p className='text-gray100 ml-xlg absolute top-[-24px]'>
           {userTyping && `${userTyping} esta digitando...`}
         </p>
@@ -33,10 +35,10 @@ export const ChatSubmit = ({ handleSendMessage, handleSomeoneTyping, userTyping 
           value={messageText}
         />
 
-        <button onClick={handleSubmitMessage}>
-          <PaperPlaneRight size={32}/>
+        <button type='submit' disabled={!messageText.length}>
+          <PaperPlaneRight size={32} />
         </button>
-      </div>
+      </form>
     </>
   )
 }

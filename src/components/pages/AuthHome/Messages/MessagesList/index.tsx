@@ -1,6 +1,7 @@
 import { MutableRefObject } from 'react'
 import { useAppSelector } from '@core/store/hooks'
 import { IMessage } from '@core/types/IMessage'
+import styles from './styles.module.css'
 
 interface MessagesListProps {
   messages: IMessage[]
@@ -11,7 +12,7 @@ export const MessagesList = ({ messages, chatRef }: MessagesListProps) => {
   const { user } = useAppSelector(state => state.user)
 
   return (
-    <section className='flex flex-col gap-md h-[calc(100vh-35vh)] py-md overflow-y-auto'>
+    <section className='flex flex-col gap-md h-[calc(100vh-30vh)] py-md overflow-y-auto'>
       {messages?.map(message =>
         <p
           key={message.id}
@@ -20,6 +21,8 @@ export const MessagesList = ({ messages, chatRef }: MessagesListProps) => {
               ? 'bg-primary ml-auto'
               : 'bg-secondary mr-auto'} 
             p-md rounded-xl max-w-[50vw] break-all
+            text-text
+            ${styles.fade_message}
           `}
         >
           {message.text}

@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { useAppSelector } from '@App/core/store/hooks'
 import { IMatch } from '@core/types/IMatch'
 import styles from './styles.module.css'
 
@@ -8,6 +9,8 @@ interface MessagesListProps {
 }
 
 export const MessagesList = ({ matchsWithMessage }: MessagesListProps) => {
+  const { user } = useAppSelector(state => state.user)
+
   if (!matchsWithMessage.length) return <h1 className='text-text'>Nenhuma mensagem ainda!</h1>
 
   return (
@@ -28,9 +31,10 @@ export const MessagesList = ({ matchsWithMessage }: MessagesListProps) => {
               className='rounded-full'
             />
 
-            <div className='flex flex-col ml-xs'>
+            <div className='flex flex-col ml-xs overflow-hidden'>
               <span className='text-text text-p5'>{matchedUser.login}</span>
-              <span className='text-gray100 text-p5 break-all text-ellipsis'>
+              <span className='text-gray100 text-p5 truncate'>
+                {messages[messages.length - 1].sender_id === user.id && 'Você: '}
                 {messages[messages.length - 1].text}
               </span>
             </div>
