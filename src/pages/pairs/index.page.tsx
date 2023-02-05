@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { Footer } from '@App/components/Footer'
+import { withSSRAuth } from '@App/core/utils/withSSRAuth'
 import { MatchesList } from '@components/pages/AuthHome/MatchesSection/MatchesList'
 import { MessagesList } from '@components/pages/AuthHome/MatchesSection/MessagesList'
 import { useFetchMatches } from '@core/hooks/useFetchMatches'
@@ -33,3 +34,7 @@ const Pairs = () => {
 }
 
 export default Pairs
+
+export const getServerSideProps = withSSRAuth(async () => {
+  return { props: {} }
+})
