@@ -1,10 +1,12 @@
 import Script from 'next/script'
 
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID
+
 export const Analytics = () => {
   return (
     <>
       <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-FFJ2V2BL3R"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
       />
 
       <Script
@@ -13,7 +15,7 @@ export const Analytics = () => {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', 'G-FFJ2V2BL3R');`
+          gtag('config', ${GA_ID});`
         }}
       />
     </>
