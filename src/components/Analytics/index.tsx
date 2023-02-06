@@ -15,7 +15,7 @@ export const Analytics = () => {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', ${GA_ID});`
+          gtag('config', '${GA_ID}');`
         }}
       />
     </>
