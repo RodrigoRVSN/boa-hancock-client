@@ -57,6 +57,6 @@
     "tsconfig-paths": "^4.1.2",
     "typescript": "latest",
     "vite-tsconfig-paths": "^4.0.5",
-    "vitest": "^0.28.3"
+    "vitest": "^0.28.4"
   }
 }
