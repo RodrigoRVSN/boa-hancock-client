@@ -1,8 +1,10 @@
+import { withSentryConfig } from '@sentry/nextjs'
+
 const withPWA = (await import('next-pwa')).default({
   dest: 'public'
 })
 
-export default withPWA({
+const PWAConfig = withPWA({
   reactStrictMode: false,
   images: {
     domains: [
@@ -11,3 +13,13 @@ export default withPWA({
   },
   pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js']
 })
+
+export default withSentryConfig(
+  {
+    sentry: { hideSourceMaps: false },
+    ...PWAConfig
+  },
+  {
+    silent: true
+  }
+)
