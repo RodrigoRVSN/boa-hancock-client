@@ -20,6 +20,7 @@ export default withSentryConfig(
     ...PWAConfig
   },
   {
-    silent: true
+    silent: true,
+    authToken: process.env.SENTRY_AUTH_TOKEN
   }
 )
