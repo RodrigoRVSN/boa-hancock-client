@@ -23,7 +23,7 @@ export const SectionsButton = ({ selectedList, setSelectedList }: SectionsButton
         className={`border-b-2 border-${selectedList === SECTIONS.MESSAGES ? 'primary' : 'black100'}`}
         onClick={() => handleChangeSection(SECTIONS.MESSAGES)}
       >
-        Messages
+        Mensagens
       </button>
     </aside>
   )

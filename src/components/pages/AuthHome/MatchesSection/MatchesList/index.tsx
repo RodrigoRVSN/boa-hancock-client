@@ -8,7 +8,7 @@ interface MatchesListProps {
 }
 
 export const MatchesList = ({ matches, isHorizontal }: MatchesListProps) => {
-  if (!matches.length) return <h1 className='text-text'>Opa ninguem aqui</h1>
+  if (!matches.length) return <h1 className='text-text'>Nenhum par formado!</h1>
 
   return (
     <section className={`flex text-text text-p5 gap-md p-xxs ${isHorizontal ? 'overflow-auto' : 'flex-wrap'}`}>
