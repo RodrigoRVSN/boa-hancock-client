@@ -3,11 +3,13 @@ import { Heart, X } from 'phosphor-react'
 import { MatchModal } from '@components/pages/AuthHome/MatchCard/MatchModal'
 import { useFetchCard } from '@core/hooks/useFetchCard'
 import { LIKE_OR_DISLIKE } from '@core/hooks/useFetchCard/useFetchCard.types'
+import { Loading } from './Loading'
 
 export const MatchCard = () => {
   const {
-    userCard,
+    isLoading,
     isError,
+    userCard,
     handleLikeOrDislikeAUser,
     isMatchModalOpen,
     matchedUser,
@@ -23,11 +25,15 @@ export const MatchCard = () => {
     )
   }
 
+  if (isLoading) {
+    return <Loading />
+  }
+
   if (isError) {
     return (
       <section className='flex flex-col items-center'>
         <Image alt='User not found' src='/assets/not-found.svg' width={300} height={300} />
-        <h1 className='text-text text-h4'>Nenhum usuário encontrado!</h1>
+        <h1 className='text-center text-text text-h4'>Nenhum usuário encontrado!</h1>
       </section>
     )
   }

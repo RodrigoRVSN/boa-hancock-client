@@ -8,14 +8,18 @@ export const useFetchCard = () => {
   const [isError, setIsError] = useState(false)
   const [matchedUser, setMatchedUser] = useState({} as IUser)
   const [isMatchModalOpen, setIsMatchModalOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   const fetchRandomUser = async () => {
     try {
+      setIsLoading(true)
       const data = await UserService.getRandomUser()
 
       setUserCard(data)
     } catch {
       setIsError(true)
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -40,6 +44,7 @@ export const useFetchCard = () => {
   }, [])
 
   return {
+    isLoading,
     isError,
     userCard,
     handleLikeOrDislikeAUser,
