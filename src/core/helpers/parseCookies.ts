@@ -13,4 +13,8 @@ const destroyCookie = (local: ServerResponse, cookieName: string) => {
   local.setHeader('Set-Cookie', `${cookieName}=deleted; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`)
 }
 
-export const cookies = { getValue, destroyCookie }
+const setCookie = (local: ServerResponse, cookieName: string, value: string) => {
+  local.setHeader('Set-Cookie', `${cookieName}=${value}; path=/;`)
+}
+
+export const cookies = { getValue, destroyCookie, setCookie }
