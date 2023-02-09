@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { AvatarLoading } from '@App/components/AvatarLoading'
 import { useResponsive } from '@App/core/hooks/useResponsive'
 import { useFetchMatches } from '@core/hooks/useFetchMatches'
 import { MatchesList } from './MatchesList'
@@ -8,7 +9,7 @@ import { SectionsButton } from './SectionsButton'
 import { UserSection } from './UserSection'
 
 export const MatchesSection = () => {
-  const { matches, matchsWithMessage } = useFetchMatches()
+  const { isLoading, matches, matchsWithMessage } = useFetchMatches()
   const [selectedList, setSelectedList] = useState(SECTIONS.MATCHES)
   const { isDesktop } = useResponsive()
 
@@ -30,7 +31,10 @@ export const MatchesSection = () => {
             selectedList={selectedList}
           />
 
-          <List />
+          {isLoading
+            ? <AvatarLoading numberOfLoaders={3} />
+            : <List />
+          }
         </>
       )}
 

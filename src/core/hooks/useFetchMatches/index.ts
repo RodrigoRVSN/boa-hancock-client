@@ -4,6 +4,7 @@ import MatchesService from '@services/MatchesService/MatchesService'
 
 export const useFetchMatches = () => {
   const [matches, setMatches] = useState<IMatch[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
   const matchsWithMessage = useMemo(() => {
     return matches.filter(({ messages }) => messages.length)
@@ -13,11 +14,12 @@ export const useFetchMatches = () => {
     const data = await MatchesService.getMatches()
 
     setMatches(data)
+    setIsLoading(false)
   }
 
   useEffect(() => {
     fetchMatches()
   }, [])
 
-  return { matches, matchsWithMessage }
+  return { isLoading, matches, matchsWithMessage }
 }

@@ -14,13 +14,13 @@ export const SectionsButton = ({ selectedList, setSelectedList }: SectionsButton
   return (
     <aside className='flex gap-lg text-text mt-xlg mb-lg'>
       <button
-        className={`border-b-2 border-${selectedList === SECTIONS.MATCHES ? 'primary' : 'black100'}`}
+        className={`border-b-2 ${selectedList === SECTIONS.MATCHES ? 'border-primary' : 'border-black100'}`}
         onClick={() => handleChangeSection(SECTIONS.MATCHES)}
       >
         Pares
       </button>
       <button
-        className={`border-b-2 border-${selectedList === SECTIONS.MESSAGES ? 'primary' : 'black100'}`}
+        className={`border-b-2 ${selectedList === SECTIONS.MESSAGES ? 'border-primary' : 'border-black100'}`}
         onClick={() => handleChangeSection(SECTIONS.MESSAGES)}
       >
         Mensagens

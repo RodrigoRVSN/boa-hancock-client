@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { AvatarLoading } from '@App/components/AvatarLoading'
 import { Footer } from '@App/components/Footer'
 import { withSSRAuth } from '@App/core/utils/withSSRAuth'
 import { MatchesList } from '@components/pages/AuthHome/MatchesSection/MatchesList'
@@ -6,7 +7,7 @@ import { MessagesList } from '@components/pages/AuthHome/MatchesSection/Messages
 import { useFetchMatches } from '@core/hooks/useFetchMatches'
 
 const Pairs = () => {
-  const { matches, matchsWithMessage } = useFetchMatches()
+  const { isLoading, matches, matchsWithMessage } = useFetchMatches()
 
   return (
     <>
@@ -19,12 +20,18 @@ const Pairs = () => {
       >
         <section>
           <h1 className='font-bold text-text text-h4 mb-md'>Seus pares</h1>
-          <MatchesList matches={matches} isHorizontal />
+          {isLoading
+            ? <AvatarLoading numberOfLoaders={2} />
+            : <MatchesList matches={matches} isHorizontal />
+          }
         </section>
 
         <section>
           <h1 className='font-bold text-text text-h4 mb-md mt-lg'>Mensagens</h1>
-          <MessagesList matchsWithMessage={matchsWithMessage} />
+          {isLoading
+            ? <AvatarLoading numberOfLoaders={2} />
+            : <MessagesList matchsWithMessage={matchsWithMessage} />
+          }
         </section>
       </main>
 
