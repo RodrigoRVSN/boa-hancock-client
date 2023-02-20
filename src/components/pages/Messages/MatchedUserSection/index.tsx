@@ -11,7 +11,6 @@ export const MatchedUserSection = ({ matchedUser }: MatchedUserSectionProps) => 
   const { back } = useRouter()
 
   if (!matchedUser) return null
-  console.log({ matchedUser })
 
   return (
     <header className='bg-black300 py-xlg'>

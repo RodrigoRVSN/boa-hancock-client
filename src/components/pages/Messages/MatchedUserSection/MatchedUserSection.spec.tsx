@@ -31,12 +31,10 @@ describe('<MatchedUserSection />', () => {
     })
 
     it('should be able to render the user info', () => {
-      const { unmount } = setup(UserMock)
+      setup(UserMock)
 
       expect(screen.getByText(UserMock.name)).toBeTruthy()
       expect(screen.getByAltText(`Foto de ${UserMock.login}`)).toBeTruthy()
-
-      unmount()
     })
   })
 
