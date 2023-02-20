@@ -11,6 +11,7 @@ export const Footer = () => {
           key={key}
           className='text-primary w-xlg h-xlg cursor-pointer'
           onClick={() => push(path)}
+          data-testid={`footer__link--${path}`}
         />
       ))}
     </footer>
