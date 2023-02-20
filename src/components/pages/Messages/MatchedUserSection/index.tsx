@@ -11,13 +11,18 @@ export const MatchedUserSection = ({ matchedUser }: MatchedUserSectionProps) => 
   const { back } = useRouter()
 
   if (!matchedUser) return null
+  console.log({ matchedUser })
 
   return (
     <header className='bg-black300 py-xlg'>
 
       <div className='flex max-w-7xl px-xxs mx-auto'>
-        <button onClick={back}>
-          <CaretLeft size={32} className='text-text'/>
+        <button
+          aria-label='Retornar'
+          onClick={back}
+          data-testid='matched-user-section__button--return'
+        >
+          <CaretLeft size={32} className='text-text' />
         </button>
 
         <Image
