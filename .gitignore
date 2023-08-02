@@ -44,5 +44,6 @@ package-lock.json
 .idea
 
 .env.local
-# Sentry
+
+# Sentry Auth Token
 .sentryclirc
