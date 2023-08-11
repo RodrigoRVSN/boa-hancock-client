@@ -1,11 +1,11 @@
 # Boa Hancock Client
 
+<!--- #################### mudar imagem exemplo #################### --->
+This is the web application for our Tinder application for Devs to find their pair programming matches.
+___
+
 ![image](https://user-images.githubusercontent.com/75763403/202018120-b5cccba4-5509-4a97-9f9a-3c401fa47127.png)
 
-<!--- #################### mudar imagem exemplo #################### --->
-___
-> This is the API for our Tinder application for Devs find their pair programming matched.
-___
 ## 💻 Prerequisites
 
 - Install LTS Node version.
